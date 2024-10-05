@@ -28,7 +28,7 @@ cd smartpi-mpu6050
 You can install the package directly from this repository or PyPI.
 
 ```bash
-pip install smartpi-mpu6050
+pip3 install smartpi-mpu6050
 ```
 
 This package will automatically install the system dependency python3-smbus required for I2C communication on Raspberry Pi.
@@ -45,7 +45,7 @@ sudo apt-get install python3-smbus
 To uninstall the package, simply run:
 
 ```bash
-pip uninstall smartpi-mpu6050
+pip3 uninstall smartpi-mpu6050
 ```
 
 Optionally, you can remove the python3-smbus system package as well:
