@@ -19,7 +19,7 @@ A Python library for interacting with the MPU-6050 sensor on the Smart Pi One (Y
 ### Step 1: Clone the repository (if installing manually)
 
 ```bash
-git clone https://github.com/yourusername/smartpi-mpu6050.git
+git clone https://github.com/adnroboticsfr/smartpi-mpu6050.git
 cd smartpi-mpu6050
 ```
 
