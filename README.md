@@ -37,7 +37,7 @@ If you have trouble with system-level dependencies, you can manually install pyt
 
 ```bash
 sudo apt-get update
-sudo apt-get install python3-smbus
+sudo apt-get install python-dev python3-pip python3-smbus
 ```
 
 ## Uninstallation
