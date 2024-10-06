@@ -146,6 +146,20 @@ class MPU6050:
         }
         print("Gyroscope calibrated with offsets:", self.gyro_offset)
 
+    def set_accel_range(self, accel_range):
+        """Sets the range of the accelerometer."""
+        # First clear the current accel range (bits 3 and 4)
+        current_range = self.bus.read_byte_data(self.address, self.ACCEL_CONFIG) & ~0x18
+        # Set the new range
+        self.bus.write_byte_data(self.address, self.ACCEL_CONFIG, current_range | accel_range)
+
+    def set_gyro_range(self, gyro_range):
+        """Sets the range of the gyroscope."""
+        # First clear the current gyro range (bits 3 and 4)
+        current_range = self.bus.read_byte_data(self.address, self.GYRO_CONFIG) & ~0x18
+        # Set the new range
+        self.bus.write_byte_data(self.address, self.GYRO_CONFIG, current_range | gyro_range)
+
     def read_accel_range(self, raw=False):
         """Reads the range the accelerometer is set to."""
         raw_data = self.bus.read_byte_data(self.address, self.ACCEL_CONFIG)
