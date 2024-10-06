@@ -146,6 +146,24 @@ class MPU6050:
         }
         print("Gyroscope calibrated with offsets:", self.gyro_offset)
 
+    def read_accel_range(self, raw=False):
+        """Reads the range the accelerometer is set to."""
+        raw_data = self.bus.read_byte_data(self.address, self.ACCEL_CONFIG)
+
+        if raw:
+            return raw_data
+        else:
+            if raw_data == self.ACCEL_RANGE_2G:
+                return 2
+            elif raw_data == self.ACCEL_RANGE_4G:
+                return 4
+            elif raw_data == self.ACCEL_RANGE_8G:
+                return 8
+            elif raw_data == self.ACCEL_RANGE_16G:
+                return 16
+            else:
+                return -1
+
     def get_accel_data_buffer(self, size=10):
         """Retrieve a buffer of recent accelerometer readings."""
         buffer = []
