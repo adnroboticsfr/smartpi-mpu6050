@@ -31,7 +31,7 @@ You can install the package directly from this repository or PyPI.
 sudo python3 setup.py install
 ```
 
-This package will automatically install the system dependency python3-smbus required for I2C communication on Raspberry Pi.
+This package will automatically install the system dependency python3-smbus required for I2C communication on Smart Pi One.
 
 If you have trouble with system-level dependencies, you can manually install python3-smbus via:
 
