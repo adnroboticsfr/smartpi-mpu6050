@@ -1,7 +1,7 @@
 from smartpi_mpu6050.mpu6050 import MPU6050
 
 # Initialize MPU-6050 at I2C address 0x68
-mpu = MPU6050(0x68)
+mpu = MPU6050(0x68)  # Use 0x53 for ADXL345
 
 # Read and print all sensor data
 sensor_data = mpu.get_all_data()

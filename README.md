@@ -8,10 +8,11 @@ A Python library for interacting with the MPU-6050 sensor on the Smart Pi One (Y
 - Retrieves accelerometer, gyroscope, and temperature data.
 - Configurable ranges for both accelerometer and gyroscope.
 - Includes automatic installation of system dependency `python3-smbus`.
+- **Compatibility**: Also compatible with the **ADXL345** sensor (use address `0x53` instead of `0x68`).
 
 ## Requirements
 
-- **Hardware**: Smart Pi One (or other systems with I2C support) + MPU-6050 sensor.
+- **Hardware**: Smart Pi One (or other systems with I2C support) + MPU-6050 sensor (or ADXL345).
 - **Software**: Python 3.6 or higher, `smbus` for I2C communication.
 
 ## Installation
@@ -62,7 +63,7 @@ After installing the package, you can easily start using it in your Python scrip
 Calibration is performed automatically during sensor initialization:
 
 ```python
-mpu = MPU6050(0x68)
+mpu = MPU6050(0x68)  # Use 0x53 for ADXL345
 ```
 Offsets are applied automatically when retrieving data from the sensors.
 
@@ -70,7 +71,7 @@ Offsets are applied automatically when retrieving data from the sensors.
 To retrieve acceleration or gyroscope data in real-time with a buffer:
 
 ```python
-mpu = MPU6050(0x68)
+mpu = MPU6050(0x68)  # Use 0x53 for ADXL345
 accel_buffer = mpu.get_accel_data_buffer(size=10)  # Buffer of 10 readings
 gyro_buffer = mpu.get_gyro_data_buffer(size=10)    # Buffer of 10 readings
 ``` 
@@ -80,7 +81,7 @@ gyro_buffer = mpu.get_gyro_data_buffer(size=10)    # Buffer of 10 readings
 ```python
 from smartpi_mpu6050.mpu6050 import MPU6050
 
-# Initialize the sensor at I2C address 0x68
+# Initialize the sensor at I2C address 0x68 (or 0x53 for ADXL345)
 mpu = MPU6050(0x68)
 
 # Get temperature
@@ -103,7 +104,7 @@ You can set the range for both the accelerometer and gyroscope to better suit yo
 ```python
 from smartpi_mpu6050.mpu6050 import MPU6050
 
-mpu = MPU6050(0x68)
+mpu = MPU6050(0x68)  # Use 0x53 for ADXL345
 
 # Set accelerometer range to 8G
 mpu.set_accel_range(mpu.ACCEL_RANGE_8G)
@@ -124,7 +125,7 @@ print("Updated Gyroscope Data:", gyro_data)
 ```python
 from smartpi_mpu6050.mpu6050 import MPU6050
 
-mpu = MPU6050(0x68)
+mpu = MPU6050(0x68)  # Use 0x53 for ADXL345
 
 # Read all sensor data (accelerometer, gyroscope, and temperature)
 sensor_data = mpu.get_all_data()
@@ -132,7 +133,6 @@ sensor_data = mpu.get_all_data()
 print("Accelerometer:", sensor_data['accel'])
 print("Gyroscope:", sensor_data['gyro'])
 print(f"Temperature: {sensor_data['temp']:.2f} °C")
-
 ```
 
 ## Contributing
@@ -142,6 +142,5 @@ Contributions are welcome! Feel free to submit a pull request or open an issue o
 
 This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
 
-## 
-Author
+## Author
 Developed by ADNRoboticsfr.
